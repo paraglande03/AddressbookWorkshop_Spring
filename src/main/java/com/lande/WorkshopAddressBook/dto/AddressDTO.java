@@ -1,17 +1,19 @@
 package com.lande.WorkshopAddressBook.dto;
 
-public class AddressDTO {
+import lombok.Data;
+
+public @Data class AddressDTO {
 	public String address;
 	public String city;
 	public String state;
-	public long zip;
+	public Long zip;
 	
 	@Override
 	public String toString() {
 		return "AddressDTO [address=" + address + ", city=" + city + ", state=" + state + ", zip=" + zip + "]";
 	}
 
-	public AddressDTO(String address, String city, String state, long zip) {
+	public AddressDTO(String address, String city, String state, Long zip) {
 		super();
 		this.address = address;
 		this.city = city;

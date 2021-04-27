@@ -37,7 +37,11 @@ public class AddressService implements AddressServiceInterface{
 	@Override
 	public AddressData updatedataById(int Id, AddressDTO dto) {
 		AddressData addressData = this.getAddressById(Id);
-		addressData.updateAddressData(dto);
+	
+		addressData.setAddress(dto.address);
+		addressData.setCity(dto.city);
+		addressData.setState(dto.state);
+		addressData.setZip(dto.zip);
 		list.set(Id-1, addressData);
 		return addressData;
 	}

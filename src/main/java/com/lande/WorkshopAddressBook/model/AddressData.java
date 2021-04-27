@@ -9,20 +9,19 @@ public @Data class AddressData {
 	public String address;
 	public String city;
 	public String state;
-	public long zip;
+	public Long zip;
 	public AddressData(int id , AddressDTO dto) {
 		super();
 		this.id=id;
-		this.updateAddressData(dto);
-	}
-	public AddressData() {}
-	
-	public void updateAddressData(AddressDTO dto) {
 		this.address = dto.address;
 		this.city = dto.city;
 		this.state = dto.state;
 		this.zip = dto.zip;
+		
 	}
+	public AddressData() {}
+	
+	
 	
 	
 	
