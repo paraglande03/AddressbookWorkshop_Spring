@@ -36,9 +36,10 @@ public class AddressController {
 		}
 		
 	@PutMapping("/update")
-	public String updateAddresse() {
-		return "put call succesful for";
-	}
+	public ResponseEntity<ResponseDTO> updateAddresse(AddressData addressData) {
+		ResponseDTO responseDTO = new ResponseDTO("success", addressData);
+		return new ResponseEntity<ResponseDTO>(responseDTO,HttpStatus.OK);
+		}
 	
 	
 	@DeleteMapping("/delete")
