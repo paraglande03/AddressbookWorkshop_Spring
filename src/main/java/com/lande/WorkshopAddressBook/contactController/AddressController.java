@@ -30,9 +30,10 @@ public class AddressController {
 	}
 	
 	@PostMapping("/create")
-	public String createAddresse() {
-		return "post call succesful for";
-	}
+	public ResponseEntity<ResponseDTO> createAddresse( AddressData addressData) {
+		ResponseDTO responseDTO = new ResponseDTO("success", addressData);
+		return new ResponseEntity<ResponseDTO>(responseDTO,HttpStatus.OK);
+		}
 		
 	@PutMapping("/update")
 	public String updateAddresse() {
