@@ -54,7 +54,8 @@ public class AddressService implements AddressServiceInterface{
 
 	@Override
 	public void deleteDataById(int Id) {
-		list.remove(Id-1);
+		AddressData addressData = this.getAddressById(Id);
+		repository.delete(addressData);
 		
 	}
 
