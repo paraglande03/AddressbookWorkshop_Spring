@@ -1,5 +1,6 @@
 package com.lande.WorkshopAddressBook.contactController;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -17,12 +18,18 @@ public class AddressController {
 	
 	@PostMapping("/create")
 	public String createAddresse() {
-		return "put call succesful for";
+		return "post call succesful for";
 	}
 		
 	@PutMapping("/update")
 	public String updateAddresse() {
 		return "put call succesful for";
+	}
+	
+	
+	@DeleteMapping("/delete")
+	public String deleteAddresse() {
+		return "delete call succesful for";
 	}
 	
 	
