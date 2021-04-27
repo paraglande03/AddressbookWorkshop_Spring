@@ -43,4 +43,11 @@ public class ContactService implements ContactServiceInterface{
 		list.set(Id-1, contactData);
 		return contactData;
 	}
+	
+	@Override
+	public void deleteDataById(int Id) {
+		list.remove(Id-1);
+		
+	}
+
 }

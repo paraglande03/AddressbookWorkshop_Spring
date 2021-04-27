@@ -16,4 +16,6 @@ public interface ContactServiceInterface {
 	public ContactData createContact(ContactDTO dto);
 	
 	public ContactData updatedataById(int Id,ContactDTO dto);
+	
+	public void deleteDataById(int Id);
 }
