@@ -16,6 +16,9 @@ public class AddressData {
 		this.state = dto.state;
 		this.zip = dto.zip;
 	}
+	public AddressData() {}
+	
+	
 	
 	
 

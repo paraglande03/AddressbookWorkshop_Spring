@@ -24,8 +24,9 @@ public class AddressController {
 	}
 	
 	@GetMapping("/get/{Id}")
-	public String getAddressById(@PathVariable("Id") int Id) {
-		return "Get call succesful for id :"+Id;
+	public ResponseEntity<ResponseDTO> getAddressById(@PathVariable("Id") int Id , AddressData addressData) {
+		ResponseDTO responseDTO = new ResponseDTO("success", addressData);
+		return new ResponseEntity<ResponseDTO>(responseDTO,HttpStatus.OK);
 	}
 	
 	@PostMapping("/create")
