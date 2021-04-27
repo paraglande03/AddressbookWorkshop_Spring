@@ -32,4 +32,15 @@ public class ContactService implements ContactServiceInterface{
 		return contactData;
 	}
 
+	@Override
+	public ContactData updatedataById(int Id, ContactDTO dto) {
+		ContactData contactData = this.getContactById(Id);
+	
+		contactData.setFName(dto.fName);
+		contactData.setLName(dto.lName);
+		contactData.setEmail(dto.email);
+		contactData.setPhoneNumber(dto.phoneNumber);
+		list.set(Id-1, contactData);
+		return contactData;
+	}
 }

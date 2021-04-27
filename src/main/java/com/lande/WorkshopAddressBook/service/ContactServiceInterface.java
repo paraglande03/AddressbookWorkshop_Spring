@@ -14,4 +14,6 @@ public interface ContactServiceInterface {
 	public ContactData getContactById(int Id);
 	
 	public ContactData createContact(ContactDTO dto);
+	
+	public ContactData updatedataById(int Id,ContactDTO dto);
 }
