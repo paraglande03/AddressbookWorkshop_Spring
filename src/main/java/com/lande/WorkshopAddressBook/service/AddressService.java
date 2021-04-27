@@ -46,6 +46,12 @@ public class AddressService implements AddressServiceInterface{
 		return addressData;
 	}
 
+	@Override
+	public void deleteDataById(int Id) {
+		list.remove(Id-1);
+		
+	}
+
 	
 
 }

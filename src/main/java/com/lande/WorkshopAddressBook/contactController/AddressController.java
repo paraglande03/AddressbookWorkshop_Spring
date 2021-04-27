@@ -56,9 +56,10 @@ public class AddressController {
 		}
 	
 	
-	@DeleteMapping("/delete")
-	public ResponseEntity<ResponseDTO> deleteAddresse(AddressData addressData) {
-		ResponseDTO responseDTO = new ResponseDTO("success", addressData);
+	@DeleteMapping("/delete/{Id}")
+	public ResponseEntity<ResponseDTO> deleteAddresse(@PathVariable("Id") int Id) {
+		Service.deleteDataById(Id);
+		ResponseDTO responseDTO = new ResponseDTO("success :-", Id);
 		return new ResponseEntity<ResponseDTO>(responseDTO,HttpStatus.OK);
 	}
 	
