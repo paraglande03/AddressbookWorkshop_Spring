@@ -1,6 +1,7 @@
 package com.lande.WorkshopAddressBook.contactController;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,6 +14,10 @@ public class AddressController {
 		return "Get call succesful for all addresses";
 	}
 		
+	@PutMapping("/create")
+	public String createAddresse() {
+		return "put call succesful for";
+	}
 	
 	
 
