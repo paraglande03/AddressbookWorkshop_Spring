@@ -11,14 +11,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lande.WorkshopAddressBook.dto.ResponseDTO;
+import com.lande.WorkshopAddressBook.model.AddressData;
 
 @RestController
 @RequestMapping("/address")
 public class AddressController {
 	
 	@GetMapping("/getall")
-	public ResponseEntity<ResponseDTO> getAllAddresses() {
-		ResponseDTO responseDTO = new ResponseDTO("success", getAllAddresses());
+	public ResponseEntity<ResponseDTO> getAllAddresses(AddressData addressData) {
+		ResponseDTO responseDTO = new ResponseDTO("success", addressData);
 		return new ResponseEntity<ResponseDTO>(responseDTO,HttpStatus.OK);
 	}
 	
