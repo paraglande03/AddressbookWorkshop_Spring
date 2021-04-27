@@ -34,6 +34,14 @@ public class AddressService implements AddressServiceInterface{
 		return list.stream().filter(addData-> addData.getId()==id).findFirst().orElseThrow();
 	}
 
+	@Override
+	public AddressData updatedataById(int Id, AddressDTO dto) {
+		AddressData addressData = this.getAddressById(Id);
+		addressData.updateAddressData(dto);
+		list.set(Id-1, addressData);
+		return addressData;
+	}
+
 	
 
 }

@@ -48,9 +48,9 @@ public class AddressController {
 		return new ResponseEntity<ResponseDTO>(responseDTO,HttpStatus.OK);
 		}
 		
-	@PutMapping("/update")
-	public ResponseEntity<ResponseDTO> updateAddresse(AddressData addressData) {
-		ResponseDTO responseDTO = new ResponseDTO("success", addressData);
+	@PutMapping("/update/{Id}")
+	public ResponseEntity<ResponseDTO> updateAddresse(@PathVariable ("Id") Integer Id, AddressDTO dto) {
+		ResponseDTO responseDTO = new ResponseDTO("success", dto);
 		return new ResponseEntity<ResponseDTO>(responseDTO,HttpStatus.OK);
 		}
 	

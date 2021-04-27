@@ -13,4 +13,5 @@ public interface AddressServiceInterface {
 	
 	public AddressData createAddress(AddressDTO dto);
 
+	public AddressData updatedataById(int Id,AddressDTO dto);
 }
