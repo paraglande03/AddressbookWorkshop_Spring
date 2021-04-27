@@ -25,7 +25,7 @@ public @Data class AddressData {
 	public Long zip;
 	public AddressData( AddressDTO dto) {
 		super();
-		this.id=id;
+		
 		this.address = dto.address;
 		this.city = dto.city;
 		this.state = dto.state;
