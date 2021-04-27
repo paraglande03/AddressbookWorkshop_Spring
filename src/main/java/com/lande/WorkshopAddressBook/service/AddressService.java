@@ -3,6 +3,8 @@ package com.lande.WorkshopAddressBook.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Id;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,28 +12,32 @@ import org.springframework.stereotype.Service;
 import com.lande.WorkshopAddressBook.dto.AddressDTO;
 import com.lande.WorkshopAddressBook.model.AddressData;
 //import com.lande.WorkshopAddressBook.repository.AddressRepository;
+import com.lande.WorkshopAddressBook.repository.AddressRepository;
 
 @Service
 public class AddressService implements AddressServiceInterface{
 
+	@Autowired
+	private AddressRepository repository;
 	
-	List<AddressData> list = new ArrayList<>();
+	
 	
 	public List<AddressData> getAllAddress(){
-		return list;
+		return repository.findAll();
 	}
 
 	@Override
 	public AddressData createAddress(AddressDTO dto) {
-		AddressData addressData = new AddressData(list.size()+1, dto);
-		list.add(addressData);
-		return addressData;
+		AddressData addressData = null;
+			addressData =	new AddressData( dto);
+		
+		return repository.save(addressData);
 	}
 
 	@Override
 	public AddressData getAddressById(int id) {
+		return repository.findById(id).orElseThrow();
 		
-		return list.stream().filter(addData-> addData.getId()==id).findFirst().orElseThrow();
 	}
 
 	@Override
@@ -42,8 +48,8 @@ public class AddressService implements AddressServiceInterface{
 		addressData.setCity(dto.city);
 		addressData.setState(dto.state);
 		addressData.setZip(dto.zip);
-		list.set(Id-1, addressData);
-		return addressData;
+		
+		return repository.save(addressData);
 	}
 
 	@Override
