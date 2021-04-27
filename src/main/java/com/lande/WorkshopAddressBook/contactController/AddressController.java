@@ -11,9 +11,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.lande.WorkshopAddressBook.dto.AddressDTO;
 import com.lande.WorkshopAddressBook.dto.ResponseDTO;
 import com.lande.WorkshopAddressBook.model.AddressData;
 import com.lande.WorkshopAddressBook.service.AddressServiceInterface;
@@ -39,7 +41,8 @@ public class AddressController {
 	}
 	
 	@PostMapping("/create")
-	public ResponseEntity<ResponseDTO> createAddresse( AddressData addressData) {
+	public ResponseEntity<ResponseDTO> createAddresse(@RequestBody AddressDTO addressDTO) {
+		AddressData addressData = Service.createAddress(addressDTO);
 		ResponseDTO responseDTO = new ResponseDTO("success", addressData);
 		return new ResponseEntity<ResponseDTO>(responseDTO,HttpStatus.OK);
 		}
