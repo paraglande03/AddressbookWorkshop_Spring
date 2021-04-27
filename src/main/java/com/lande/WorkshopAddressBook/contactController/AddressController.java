@@ -44,14 +44,14 @@ public class AddressController {
 	}
 	
 	@PostMapping("/create")
-	public ResponseEntity<ResponseDTO> createAddresse(@Valid@RequestBody AddressDTO addressDTO) {
+	public ResponseEntity<ResponseDTO> createAddresse(@RequestBody AddressDTO addressDTO) {
 		AddressData addressData = Service.createAddress(addressDTO);
 		ResponseDTO responseDTO = new ResponseDTO("success", addressData);
 		return new ResponseEntity<ResponseDTO>(responseDTO,HttpStatus.OK);
 		}
 		
 	@PutMapping("/update/{Id}")
-	public ResponseEntity<ResponseDTO> updateAddress(@PathVariable ("Id") Integer Id,@Valid @RequestBody  AddressDTO dto) {
+	public ResponseEntity<ResponseDTO> updateAddress(@PathVariable ("Id") Integer Id, @RequestBody  AddressDTO dto) {
 		AddressData addressData = Service.updatedataById(Id, dto);
 		ResponseDTO responseDTO = new ResponseDTO("success", addressData);
 		return new ResponseEntity<ResponseDTO>(responseDTO,HttpStatus.OK);

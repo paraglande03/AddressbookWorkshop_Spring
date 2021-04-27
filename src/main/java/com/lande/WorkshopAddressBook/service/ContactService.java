@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 
 import com.lande.WorkshopAddressBook.dto.ContactDTO;
-
+import com.lande.WorkshopAddressBook.exceptions.AddressBookException;
 import com.lande.WorkshopAddressBook.model.ContactData;
 import com.lande.WorkshopAddressBook.repository.ContactRepository;
 
@@ -25,7 +25,7 @@ public class ContactService implements ContactServiceInterface{
 
 	@Override
 	public ContactData getContactById(int Id) {
-		return repository.findById(Id).orElseThrow();		
+		return repository.findById(Id).orElseThrow(()-> new AddressBookException("details not found!"))	;	
 	}
 	
 	@Override

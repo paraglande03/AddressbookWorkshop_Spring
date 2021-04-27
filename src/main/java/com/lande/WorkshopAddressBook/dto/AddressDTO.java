@@ -4,8 +4,10 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 import lombok.Data;
+import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
 @Slf4j
+@ToString
 public @Data class AddressDTO {
 	
 	@NotBlank(message = "Address should not be empty")

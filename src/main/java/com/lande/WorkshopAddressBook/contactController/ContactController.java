@@ -2,6 +2,8 @@ package com.lande.WorkshopAddressBook.contactController;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +23,10 @@ import com.lande.WorkshopAddressBook.dto.ResponseDTO;
 import com.lande.WorkshopAddressBook.model.AddressData;
 import com.lande.WorkshopAddressBook.model.ContactData;
 import com.lande.WorkshopAddressBook.service.ContactServiceInterface;
+
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 
 @RestController
 @RequestMapping("/contact")

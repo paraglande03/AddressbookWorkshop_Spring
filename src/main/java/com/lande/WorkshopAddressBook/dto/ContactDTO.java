@@ -4,12 +4,15 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 
 import lombok.Data;
+import lombok.ToString;
 
+@ToString
 public @Data class ContactDTO {
-	@Pattern(regexp = "^[A-Z]{1}[a-zA-Z\\s]{2,}$" , message = "Please add valid first name")
+	
+	@Pattern(regexp = "^[A-Z]{1}[a-zA-Z]{2,}$" , message = "Please add valid first name")
 	public String fName;
 	
-	@Pattern(regexp = "^[A-Z]{1}[a-zA-Z\\s]{2,}$" , message = "Please add valid last name")
+	@Pattern(regexp = "^[A-Z]{1}[a-zA-Z]{2,}$" , message = "Please add valid last name")
 	public String lName;
 	
 	@NotBlank(message = "Please add email")
