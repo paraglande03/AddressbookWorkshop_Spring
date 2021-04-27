@@ -2,7 +2,9 @@ package com.lande.WorkshopAddressBook.model;
 
 import com.lande.WorkshopAddressBook.dto.AddressDTO;
 
-public class AddressData {
+import lombok.Data;
+
+public @Data class AddressData {
 	public int id;
 	public String address;
 	public String city;

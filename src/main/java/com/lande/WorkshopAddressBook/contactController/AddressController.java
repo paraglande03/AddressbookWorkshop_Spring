@@ -35,7 +35,8 @@ public class AddressController {
 	}
 	
 	@GetMapping("/get/{Id}")
-	public ResponseEntity<ResponseDTO> getAddressById(@PathVariable("Id") int Id , AddressData addressData) {
+	public ResponseEntity<ResponseDTO> getAddressById(@PathVariable("Id") int Id) {
+		AddressData addressData = Service.getAddressById(Id);
 		ResponseDTO responseDTO = new ResponseDTO("success", addressData);
 		return new ResponseEntity<ResponseDTO>(responseDTO,HttpStatus.OK);
 	}

@@ -28,6 +28,12 @@ public class AddressService implements AddressServiceInterface{
 		return addressData;
 	}
 
+	@Override
+	public AddressData getAddressById(int id) {
+		
+		return list.stream().filter(addData-> addData.getId()==id).findFirst().orElseThrow();
+	}
+
 	
 
 }

@@ -9,7 +9,7 @@ public interface AddressServiceInterface {
 	
 	public List<AddressData> getAllAddress();
 	
-//	public AddressData getAddressById(int id );
+	public AddressData getAddressById(int id );
 	
 	public AddressData createAddress(AddressDTO dto);
 
