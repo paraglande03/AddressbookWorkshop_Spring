@@ -43,8 +43,9 @@ public class AddressController {
 	
 	
 	@DeleteMapping("/delete")
-	public String deleteAddresse() {
-		return "delete call succesful for";
+	public ResponseEntity<ResponseDTO> deleteAddresse(AddressData addressData) {
+		ResponseDTO responseDTO = new ResponseDTO("success", addressData);
+		return new ResponseEntity<ResponseDTO>(responseDTO,HttpStatus.OK);
 	}
 	
 	
