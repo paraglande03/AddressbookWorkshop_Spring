@@ -1,11 +1,23 @@
 package com.lande.WorkshopAddressBook.dto;
 
-import lombok.Data;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
+import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
+@Slf4j
 public @Data class AddressDTO {
+	
+	@NotBlank(message = "Address should not be empty")
 	public String address;
+	
+	@NotBlank(message = "City should not be empty")
 	public String city;
+	
+	@NotBlank(message = "state should not be empty")
 	public String state;
+	
+	@NotNull(message = "pin code should not be empty")
 	public Long zip;
 	
 	@Override

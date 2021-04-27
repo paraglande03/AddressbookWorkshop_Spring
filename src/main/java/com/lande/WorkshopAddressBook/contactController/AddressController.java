@@ -2,6 +2,8 @@ package com.lande.WorkshopAddressBook.contactController;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -42,14 +44,14 @@ public class AddressController {
 	}
 	
 	@PostMapping("/create")
-	public ResponseEntity<ResponseDTO> createAddresse(@RequestBody AddressDTO addressDTO) {
+	public ResponseEntity<ResponseDTO> createAddresse(@Valid@RequestBody AddressDTO addressDTO) {
 		AddressData addressData = Service.createAddress(addressDTO);
 		ResponseDTO responseDTO = new ResponseDTO("success", addressData);
 		return new ResponseEntity<ResponseDTO>(responseDTO,HttpStatus.OK);
 		}
 		
 	@PutMapping("/update/{Id}")
-	public ResponseEntity<ResponseDTO> updateAddress(@PathVariable ("Id") Integer Id, @RequestBody  AddressDTO dto) {
+	public ResponseEntity<ResponseDTO> updateAddress(@PathVariable ("Id") Integer Id,@Valid @RequestBody  AddressDTO dto) {
 		AddressData addressData = Service.updatedataById(Id, dto);
 		ResponseDTO responseDTO = new ResponseDTO("success", addressData);
 		return new ResponseEntity<ResponseDTO>(responseDTO,HttpStatus.OK);
