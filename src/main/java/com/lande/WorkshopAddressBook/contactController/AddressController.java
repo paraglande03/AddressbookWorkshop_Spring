@@ -1,6 +1,7 @@
 package com.lande.WorkshopAddressBook.contactController;
 
 import java.util.List;
+import java.util.UUID;
 
 import javax.validation.Valid;
 
@@ -43,7 +44,7 @@ public class AddressController {
 	}
 	
 	@GetMapping("/{Id}")
-	public ResponseEntity<ResponseDTO> getAddressById(@PathVariable("Id") int Id) {
+	public ResponseEntity<ResponseDTO> getAddressById(@PathVariable("Id") UUID Id) {
 		Address address = Service.getAddressById(Id);
 		ResponseDTO responseDTO = new ResponseDTO("success", address);
 		return new ResponseEntity<ResponseDTO>(responseDTO,HttpStatus.OK);
@@ -66,7 +67,7 @@ public class AddressController {
 		}
 		
 	@PutMapping("/update/{Id}")
-	public ResponseEntity<ResponseDTO> updateAddress(@PathVariable ("Id") Integer Id,  @RequestBody  @Valid AddressDTO dto, BindingResult bindingResult) {
+	public ResponseEntity<ResponseDTO> updateAddress(@PathVariable ("Id") UUID Id,  @RequestBody  @Valid AddressDTO dto, BindingResult bindingResult) {
 		if(bindingResult.hasErrors()) {
 			log.info("Please enter valid information");
 			ResponseDTO responseDTO = new ResponseDTO("Error in :"+bindingResult.getFieldError().getField(), bindingResult.getFieldError().getDefaultMessage());
@@ -79,7 +80,7 @@ public class AddressController {
 	
 	
 	@DeleteMapping("/delete/{Id}")
-	public ResponseEntity<ResponseDTO> deleteAddresse(@PathVariable("Id") int Id) {
+	public ResponseEntity<ResponseDTO> deleteAddresse(@PathVariable("Id") UUID Id) {
 		Service.deleteDataById(Id);
 		ResponseDTO responseDTO = new ResponseDTO("success :-", Id);
 		return new ResponseEntity<ResponseDTO>(responseDTO,HttpStatus.OK);
