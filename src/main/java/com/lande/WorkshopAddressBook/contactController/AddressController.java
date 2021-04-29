@@ -39,7 +39,7 @@ public class AddressController {
 	@GetMapping("/all")
 	public ResponseEntity<ResponseDTO> getAllAddresses() {
 		List<Address> address = Service.getAllAddress();
-		ResponseDTO responseDTO = new ResponseDTO("success", address);
+		ResponseDTO responseDTO = new ResponseDTO("All Addresses", address);
 		return new ResponseEntity<ResponseDTO>(responseDTO,HttpStatus.OK);
 	}
 	

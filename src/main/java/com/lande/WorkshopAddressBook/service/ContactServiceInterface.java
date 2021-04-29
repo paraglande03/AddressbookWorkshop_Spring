@@ -1,6 +1,7 @@
 package com.lande.WorkshopAddressBook.service;
 
 import java.util.List;
+import java.util.UUID;
 
 import com.lande.WorkshopAddressBook.dto.AddressDTO;
 import com.lande.WorkshopAddressBook.dto.ContactDTO;
