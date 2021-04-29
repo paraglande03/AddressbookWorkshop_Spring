@@ -1,38 +1,45 @@
 package com.lande.WorkshopAddressBook.dto;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 import lombok.Data;
 import lombok.ToString;
 
-@ToString
+
 public @Data class ContactDTO {
 	
-	@Pattern(regexp = "^[A-Z]{1}[a-zA-Z]{2,}$" , message = "Please add valid first name")
-	public String fName;
+	@Pattern(regexp = "^[a-zA-Z]{2,}$" , message = "Please add valid first name")
+	@NotBlank(message = "name should not be empty")
+	public String first_name;
 	
-	@Pattern(regexp = "^[A-Z]{1}[a-zA-Z]{2,}$" , message = "Please add valid last name")
-	public String lName;
+	@Pattern(regexp = "^[a-zA-Z]{2,}$" , message = "Please add valid last name")
+	@NotBlank(message = "name should not be empty")
+	public String last_name;
 	
-	@NotBlank(message = "Please add email")
+	
+	@Email
+	@NotBlank(message = "email should not be empty")
 	public String email;
 	
-	@NotBlank(message = "please add phone number")
-	public Long phoneNumber;
+	@NotBlank(message = "Phone number should not be empty")
+	@Pattern(regexp = "^[0-9]{10}$" , message = "Please valid 10 digit phone number")
+	public String phoneNumber;
 	
 	
 	@Override
 	public String toString() {
-		return "ContactDTO [fName=" + fName + ", lName=" + lName + ", email=" + email + ", phoneNumber=" + phoneNumber
+		return "ContactDTO [first_name=" + first_name + ", last_name=" + last_name + ", email=" + email + ", phoneNumber=" + phoneNumber
 				+ "]";
 	}
 
 
-	public ContactDTO(String fName, String lName, String email, Long phoneNumber) {
+	public ContactDTO(String first_name, String last_name, String email, String phoneNumber) {
 		super();
-		this.fName = fName;
-		this.lName = lName;
+		this.first_name = first_name;
+		this.last_name = last_name;
 		this.email = email;
 		this.phoneNumber = phoneNumber;
 	}

@@ -3,17 +3,19 @@ package com.lande.WorkshopAddressBook.service;
 import java.util.List;
 
 import com.lande.WorkshopAddressBook.dto.AddressDTO;
-import com.lande.WorkshopAddressBook.model.AddressData;
+import com.lande.WorkshopAddressBook.model.Address;
 
 public interface AddressServiceInterface {
 	
-	public List<AddressData> getAllAddress();
+	public List<Address> getAllAddress();
 	
-	public AddressData getAddressById(int id );
+	public Address getAddressById(int id );
 	
-	public AddressData createAddress(AddressDTO dto);
+	public Address createAddress(AddressDTO dto);
 
-	public AddressData updatedataById(int Id,AddressDTO dto);
+	public Address updatedataById(int Id,AddressDTO dto);
 	
 	public void deleteDataById(int Id);
+	
+	public List<Address> sortAddress();
 }

@@ -1,7 +1,11 @@
 package com.lande.WorkshopAddressBook.dto;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 import lombok.Data;
 import lombok.ToString;
@@ -9,6 +13,8 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @ToString
 public @Data class AddressDTO {
+	
+	
 	
 	@NotBlank(message = "Address should not be empty")
 	public String address;
@@ -19,15 +25,16 @@ public @Data class AddressDTO {
 	@NotBlank(message = "state should not be empty")
 	public String state;
 	
-	@NotNull(message = "pin code should not be empty")
-	public Long zip;
+	@Pattern(regexp = "^[0-9]{6}$" , message = "Please add valid six digit pin code")
+	@NotBlank(message = "pin code should not be empty")
+	public String zip;
 	
 	@Override
 	public String toString() {
 		return "AddressDTO [address=" + address + ", city=" + city + ", state=" + state + ", zip=" + zip + "]";
 	}
 
-	public AddressDTO(String address, String city, String state, Long zip) {
+	public AddressDTO(String address, String city, String state, String zip) {
 		super();
 		this.address = address;
 		this.city = city;

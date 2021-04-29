@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,9 +21,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.lande.WorkshopAddressBook.dto.AddressDTO;
 import com.lande.WorkshopAddressBook.dto.ResponseDTO;
-import com.lande.WorkshopAddressBook.model.AddressData;
+import com.lande.WorkshopAddressBook.model.Address;
 import com.lande.WorkshopAddressBook.service.AddressServiceInterface;
 
+import ch.qos.logback.classic.Logger;
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @RestController
 @RequestMapping("/address")
 public class AddressController {
@@ -29,31 +35,45 @@ public class AddressController {
 	@Autowired
 	private AddressServiceInterface Service;
 	
-	@GetMapping("/getall")
+	@GetMapping("/all")
 	public ResponseEntity<ResponseDTO> getAllAddresses() {
-		List<AddressData> addressData = Service.getAllAddress();
-		ResponseDTO responseDTO = new ResponseDTO("success", addressData);
+		List<Address> address = Service.getAllAddress();
+		ResponseDTO responseDTO = new ResponseDTO("success", address);
 		return new ResponseEntity<ResponseDTO>(responseDTO,HttpStatus.OK);
 	}
 	
-	@GetMapping("/get/{Id}")
+	@GetMapping("/{Id}")
 	public ResponseEntity<ResponseDTO> getAddressById(@PathVariable("Id") int Id) {
-		AddressData addressData = Service.getAddressById(Id);
-		ResponseDTO responseDTO = new ResponseDTO("success", addressData);
+		Address address = Service.getAddressById(Id);
+		ResponseDTO responseDTO = new ResponseDTO("success", address);
 		return new ResponseEntity<ResponseDTO>(responseDTO,HttpStatus.OK);
 	}
 	
 	@PostMapping("/create")
-	public ResponseEntity<ResponseDTO> createAddresse(@RequestBody AddressDTO addressDTO) {
-		AddressData addressData = Service.createAddress(addressDTO);
-		ResponseDTO responseDTO = new ResponseDTO("success", addressData);
-		return new ResponseEntity<ResponseDTO>(responseDTO,HttpStatus.OK);
+	public ResponseEntity<ResponseDTO> createAddresse(@Valid @RequestBody AddressDTO addressDTO, BindingResult bindingResult) {
+		if(bindingResult.hasErrors()) {
+			log.info("Please enter valid information");
+			ResponseDTO responseDTO = new ResponseDTO("Error in :"+bindingResult.getFieldError().getField()+bindingResult.getAllErrors().get(0).getDefaultMessage(), bindingResult.getFieldError().getDefaultMessage());
+			return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.BAD_REQUEST);
+		}
+		
+			Address address = Service.createAddress(addressDTO);
+			ResponseDTO responseDTO = new ResponseDTO("success", address);
+			return new ResponseEntity<ResponseDTO>(responseDTO,HttpStatus.OK);
+
+		
+		
 		}
 		
 	@PutMapping("/update/{Id}")
-	public ResponseEntity<ResponseDTO> updateAddress(@PathVariable ("Id") Integer Id, @RequestBody  AddressDTO dto) {
-		AddressData addressData = Service.updatedataById(Id, dto);
-		ResponseDTO responseDTO = new ResponseDTO("success", addressData);
+	public ResponseEntity<ResponseDTO> updateAddress(@PathVariable ("Id") Integer Id,  @RequestBody  @Valid AddressDTO dto, BindingResult bindingResult) {
+		if(bindingResult.hasErrors()) {
+			log.info("Please enter valid information");
+			ResponseDTO responseDTO = new ResponseDTO("Error in :"+bindingResult.getFieldError().getField(), bindingResult.getFieldError().getDefaultMessage());
+			return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.BAD_REQUEST);
+		}
+		Address address = Service.updatedataById(Id, dto);
+		ResponseDTO responseDTO = new ResponseDTO("success", address);
 		return new ResponseEntity<ResponseDTO>(responseDTO,HttpStatus.OK);
 		}
 	
@@ -65,6 +85,13 @@ public class AddressController {
 		return new ResponseEntity<ResponseDTO>(responseDTO,HttpStatus.OK);
 	}
 	
+	@GetMapping("/sort")
+	public ResponseEntity<ResponseDTO> sortAddressByValue(){
+		
+		List<Address> address = Service.sortAddress();
+		ResponseDTO responseDTO = new ResponseDTO("sorted", address);
+		return new ResponseEntity<ResponseDTO>(responseDTO,HttpStatus.OK); 
+	}
 	
 	
 
