@@ -40,14 +40,14 @@ public class ContactController {
 	@GetMapping("/all")
 	public ResponseEntity<ResponseDTO> getAllContacts() {
 		List<Contact> contact = Service.getAllContacts();
-		ResponseDTO responseDTO = new ResponseDTO("success", contact);
+		ResponseDTO responseDTO = new ResponseDTO("All Contacts!", contact);
 		return new ResponseEntity<ResponseDTO>(responseDTO,HttpStatus.OK);
 	}
 
 	@GetMapping("/get/{Id}")
 	public ResponseEntity<ResponseDTO> getContactById(@PathVariable("Id") UUID Id) {
 		Contact contact = Service.getContactById(Id);
-		ResponseDTO responseDTO = new ResponseDTO("success", contact);
+		ResponseDTO responseDTO = new ResponseDTO("Contact Of Id:-"+Id, contact);
 		return new ResponseEntity<ResponseDTO>(responseDTO,HttpStatus.OK);
 	}
 	
@@ -60,7 +60,7 @@ public class ContactController {
 		}
 		
 		Contact contact = Service.createContact(dto);
-		ResponseDTO responseDTO = new ResponseDTO("success", contact);
+		ResponseDTO responseDTO = new ResponseDTO("Created New Contact!", contact);
 		return new ResponseEntity<ResponseDTO>(responseDTO,HttpStatus.OK);
 		}
 	
@@ -73,14 +73,14 @@ public class ContactController {
 		}
 		
 		Contact contact = Service.updatedataById(Id, dto);
-		ResponseDTO responseDTO = new ResponseDTO("success", contact);
+		ResponseDTO responseDTO = new ResponseDTO("Updated contact of Id:-"+Id, contact);
 		return new ResponseEntity<ResponseDTO>(responseDTO,HttpStatus.OK);
 		}
 	
 	@DeleteMapping("/delete/{Id}")
 	public ResponseEntity<ResponseDTO> deleteContact(@PathVariable("Id") UUID Id) {
 		Service.deleteDataById(Id);
-		ResponseDTO responseDTO = new ResponseDTO("success :-", Id);
+		ResponseDTO responseDTO = new ResponseDTO("Deleted COntactOf ID:-" +Id, Id);
 		return new ResponseEntity<ResponseDTO>(responseDTO,HttpStatus.OK);
 	}
 	
@@ -88,7 +88,7 @@ public class ContactController {
 	public ResponseEntity<ResponseDTO> sortContactByValue(){
 		
 		List<Contact> contact = Service.sortContact();
-		ResponseDTO responseDTO = new ResponseDTO("sorted", contact);
+		ResponseDTO responseDTO = new ResponseDTO("Sorted! Contacts..", contact);
 		return new ResponseEntity<ResponseDTO>(responseDTO,HttpStatus.OK); 
 	}
 	
