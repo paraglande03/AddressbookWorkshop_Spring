@@ -35,18 +35,18 @@ import lombok.extern.slf4j.Slf4j;
 public class ContactController {
 	
 	@Autowired
-	private	ContactServiceInterface Service;
+	private	ContactServiceInterface service;
 	
 	@GetMapping("/all")
 	public ResponseEntity<ResponseDTO> getAllContacts() {
-		List<Contact> contact = Service.getAllContacts();
+		List<Contact> contact = service.getAllContacts();
 		ResponseDTO responseDTO = new ResponseDTO("All Contacts!", contact);
 		return new ResponseEntity<ResponseDTO>(responseDTO,HttpStatus.OK);
 	}
 
 	@GetMapping("/get/{Id}")
 	public ResponseEntity<ResponseDTO> getContactById(@PathVariable("Id") UUID Id) {
-		Contact contact = Service.getContactById(Id);
+		Contact contact = service.getContactById(Id);
 		ResponseDTO responseDTO = new ResponseDTO("Contact Of Id:-"+Id, contact);
 		return new ResponseEntity<ResponseDTO>(responseDTO,HttpStatus.OK);
 	}
@@ -59,7 +59,7 @@ public class ContactController {
 			return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.BAD_REQUEST);
 		}
 		
-		Contact contact = Service.createContact(dto);
+		Contact contact = service.createContact(dto);
 		ResponseDTO responseDTO = new ResponseDTO("Created New Contact!", contact);
 		return new ResponseEntity<ResponseDTO>(responseDTO,HttpStatus.OK);
 		}
@@ -72,14 +72,14 @@ public class ContactController {
 			return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.BAD_REQUEST);
 		}
 		
-		Contact contact = Service.updatedataById(Id, dto);
+		Contact contact = service.updatedataById(Id, dto);
 		ResponseDTO responseDTO = new ResponseDTO("Updated contact of Id:-"+Id, contact);
 		return new ResponseEntity<ResponseDTO>(responseDTO,HttpStatus.OK);
 		}
 	
 	@DeleteMapping("/delete/{Id}")
 	public ResponseEntity<ResponseDTO> deleteContact(@PathVariable("Id") UUID Id) {
-		Service.deleteDataById(Id);
+		service.deleteDataById(Id);
 		ResponseDTO responseDTO = new ResponseDTO("Deleted COntactOf ID:-" +Id, Id);
 		return new ResponseEntity<ResponseDTO>(responseDTO,HttpStatus.OK);
 	}
@@ -87,7 +87,7 @@ public class ContactController {
 	@GetMapping("/sort")
 	public ResponseEntity<ResponseDTO> sortContactByValue(){
 		
-		List<Contact> contact = Service.sortContact();
+		List<Contact> contact = service.sortContact();
 		ResponseDTO responseDTO = new ResponseDTO("Sorted! Contacts..", contact);
 		return new ResponseEntity<ResponseDTO>(responseDTO,HttpStatus.OK); 
 	}
