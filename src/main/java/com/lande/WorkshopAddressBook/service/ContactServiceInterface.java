@@ -11,13 +11,13 @@ public interface ContactServiceInterface {
 
 	public List<Contact> getAllContacts();
 	
-	public Contact getContactById(int Id);
+	public Contact getContactById(UUID Id);
 	
 	public Contact createContact(ContactDTO dto);
 	
-	public Contact updatedataById(int Id,ContactDTO dto);
+	public Contact updatedataById(UUID Id,ContactDTO dto);
 	
-	public void deleteDataById(int Id);
+	public void deleteDataById(UUID Id);
 	
 	public List<Contact> sortContact();
 }

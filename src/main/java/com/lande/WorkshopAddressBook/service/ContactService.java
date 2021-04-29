@@ -25,7 +25,7 @@ public class ContactService implements ContactServiceInterface{
 	}
 
 	@Override
-	public Contact getContactById(int Id) {
+	public Contact getContactById(UUID Id) {
 		return repository.findById(Id).orElseThrow(()-> new AddressBookException("details not found!"))	;	
 	}
 	
@@ -36,7 +36,7 @@ public class ContactService implements ContactServiceInterface{
 	}
 
 	@Override
-	public Contact updatedataById(int Id, ContactDTO dto) {
+	public Contact updatedataById(UUID Id, ContactDTO dto) {
 		Contact contact = this.getContactById(Id);
 	
 		contact.setFirst_name(dto.first_name);
@@ -47,7 +47,7 @@ public class ContactService implements ContactServiceInterface{
 	}
 	
 	@Override
-	public void deleteDataById(int Id) {
+	public void deleteDataById(UUID Id) {
 		Contact contact = this.getContactById(Id);
 		repository.delete(contact);
 		
