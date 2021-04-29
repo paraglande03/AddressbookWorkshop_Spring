@@ -39,14 +39,14 @@ public class AddressController {
 	@GetMapping("/all")
 	public ResponseEntity<ResponseDTO> getAllAddresses() {
 		List<Address> address = Service.getAllAddress();
-		ResponseDTO responseDTO = new ResponseDTO("All Addresses", address);
+		ResponseDTO responseDTO = new ResponseDTO("All Addresses!", address);
 		return new ResponseEntity<ResponseDTO>(responseDTO,HttpStatus.OK);
 	}
 	
 	@GetMapping("/{Id}")
 	public ResponseEntity<ResponseDTO> getAddressById(@PathVariable("Id") UUID Id) {
 		Address address = Service.getAddressById(Id);
-		ResponseDTO responseDTO = new ResponseDTO("success", address);
+		ResponseDTO responseDTO = new ResponseDTO("Found Address of id:-"+Id, address);
 		return new ResponseEntity<ResponseDTO>(responseDTO,HttpStatus.OK);
 	}
 	
@@ -59,7 +59,7 @@ public class AddressController {
 		}
 		
 			Address address = Service.createAddress(addressDTO);
-			ResponseDTO responseDTO = new ResponseDTO("success", address);
+			ResponseDTO responseDTO = new ResponseDTO("Created New Addres!", address);
 			return new ResponseEntity<ResponseDTO>(responseDTO,HttpStatus.OK);
 
 		
@@ -74,7 +74,7 @@ public class AddressController {
 			return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.BAD_REQUEST);
 		}
 		Address address = Service.updatedataById(Id, dto);
-		ResponseDTO responseDTO = new ResponseDTO("success", address);
+		ResponseDTO responseDTO = new ResponseDTO("Updated! Address of ID:-"+Id, address);
 		return new ResponseEntity<ResponseDTO>(responseDTO,HttpStatus.OK);
 		}
 	
@@ -82,7 +82,7 @@ public class AddressController {
 	@DeleteMapping("/delete/{Id}")
 	public ResponseEntity<ResponseDTO> deleteAddresse(@PathVariable("Id") UUID Id) {
 		Service.deleteDataById(Id);
-		ResponseDTO responseDTO = new ResponseDTO("success :-", Id);
+		ResponseDTO responseDTO = new ResponseDTO("Deleted Address Of Id:-"+Id, Id);
 		return new ResponseEntity<ResponseDTO>(responseDTO,HttpStatus.OK);
 	}
 	
@@ -90,7 +90,7 @@ public class AddressController {
 	public ResponseEntity<ResponseDTO> sortAddressByValue(){
 		
 		List<Address> address = Service.sortAddress();
-		ResponseDTO responseDTO = new ResponseDTO("sorted", address);
+		ResponseDTO responseDTO = new ResponseDTO("Sorted! Addresses..", address);
 		return new ResponseEntity<ResponseDTO>(responseDTO,HttpStatus.OK); 
 	}
 	
