@@ -44,7 +44,7 @@ public class ContactController {
 	}
 
 	@GetMapping("/get/{Id}")
-	public ResponseEntity<ResponseDTO> getContactById(@PathVariable("Id") int Id) {
+	public ResponseEntity<ResponseDTO> getContactById(@PathVariable("Id") UUID Id) {
 		Contact contact = Service.getContactById(Id);
 		ResponseDTO responseDTO = new ResponseDTO("success", contact);
 		return new ResponseEntity<ResponseDTO>(responseDTO,HttpStatus.OK);
@@ -64,7 +64,7 @@ public class ContactController {
 		}
 	
 	@PutMapping("/update/{Id}")
-	public ResponseEntity<ResponseDTO> updateContact(@PathVariable ("Id") Integer Id, @RequestBody @Valid ContactDTO dto, BindingResult bindingResult) {
+	public ResponseEntity<ResponseDTO> updateContact(@PathVariable ("Id") UUID Id, @RequestBody @Valid ContactDTO dto, BindingResult bindingResult) {
 		if(bindingResult.hasErrors()) {
 			log.info("Please enter valid information");
 			ResponseDTO responseDTO = new ResponseDTO("Error in :"+bindingResult.getFieldError().getField(), bindingResult.getFieldError().getDefaultMessage());
@@ -77,7 +77,7 @@ public class ContactController {
 		}
 	
 	@DeleteMapping("/delete/{Id}")
-	public ResponseEntity<ResponseDTO> deleteContact(@PathVariable("Id") int Id) {
+	public ResponseEntity<ResponseDTO> deleteContact(@PathVariable("Id") UUID Id) {
 		Service.deleteDataById(Id);
 		ResponseDTO responseDTO = new ResponseDTO("success :-", Id);
 		return new ResponseEntity<ResponseDTO>(responseDTO,HttpStatus.OK);
