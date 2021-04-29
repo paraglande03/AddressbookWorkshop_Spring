@@ -2,6 +2,7 @@ package com.lande.WorkshopAddressBook.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import javax.persistence.Id;
 
@@ -39,13 +40,13 @@ public class AddressService implements AddressServiceInterface{
 	}
 
 	@Override
-	public Address getAddressById(int id) {
+	public Address getAddressById(UUID id) {
 		return repository.findById(id).orElseThrow();
 		
 	}
 
 	@Override
-	public Address updatedataById(int Id, AddressDTO dto) {
+	public Address updatedataById(UUID Id, AddressDTO dto) {
 		Address address = this.getAddressById(Id);
 	
 		address.setAddress(dto.address);
@@ -57,7 +58,7 @@ public class AddressService implements AddressServiceInterface{
 	}
 
 	@Override
-	public void deleteDataById(int Id) {
+	public void deleteDataById(UUID Id) {
 		Address address = this.getAddressById(Id);
 		repository.delete(address);
 		
