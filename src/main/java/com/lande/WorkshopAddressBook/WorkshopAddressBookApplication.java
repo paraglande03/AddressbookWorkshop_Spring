@@ -5,7 +5,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 
 import lombok.extern.slf4j.Slf4j;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
+@EnableSwagger2
 @Slf4j
 @SpringBootApplication
 public class WorkshopAddressBookApplication {

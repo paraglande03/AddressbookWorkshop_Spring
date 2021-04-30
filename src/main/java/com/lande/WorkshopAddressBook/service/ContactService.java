@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 import com.lande.WorkshopAddressBook.dto.ContactDTO;
 import com.lande.WorkshopAddressBook.exceptions.AddressBookException;
-import com.lande.WorkshopAddressBook.model.Address;
 import com.lande.WorkshopAddressBook.model.Contact;
 import com.lande.WorkshopAddressBook.repository.ContactRepository;
 

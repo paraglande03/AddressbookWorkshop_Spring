@@ -1,17 +1,11 @@
 package com.lande.WorkshopAddressBook.dto;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 import lombok.Data;
-import lombok.ToString;
-import lombok.extern.slf4j.Slf4j;
-@Slf4j
-@ToString
+
 public @Data class AddressDTO {
 	
 	

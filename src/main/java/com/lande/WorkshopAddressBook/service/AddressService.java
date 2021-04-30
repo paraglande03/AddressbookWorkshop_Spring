@@ -1,23 +1,17 @@
 package com.lande.WorkshopAddressBook.service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import javax.persistence.Id;
 
-import org.hibernate.criterion.Order;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 
 import com.lande.WorkshopAddressBook.dto.AddressDTO;
 import com.lande.WorkshopAddressBook.model.Address;
-//import com.lande.WorkshopAddressBook.repository.AddressRepository;
 import com.lande.WorkshopAddressBook.repository.AddressRepository;
 
-import lombok.var;
 
 @Service
 public class AddressService implements AddressServiceInterface{
