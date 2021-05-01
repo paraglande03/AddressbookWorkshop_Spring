@@ -7,6 +7,7 @@ import java.util.UUID;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.CreationTimestamp;
@@ -39,6 +40,10 @@ public @Data class Contact {
 	public String phoneNumber;
 	@UpdateTimestamp
 	private LocalDateTime updated_on;
+
+	@OneToOne
+	private Address address;
+	
 	
 	public Contact() {}
 	
