@@ -6,6 +6,7 @@ import java.util.UUID;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.CreationTimestamp;
@@ -25,6 +26,9 @@ public @Data class Address {
 	@GenericGenerator(name = "uuid2" , strategy = "uuid2")
 	@Type(type = "uuid-char")
 	private UUID id;
+	
+	@OneToOne
+	private Contact contact;
 	
 	
 	@CreationTimestamp
