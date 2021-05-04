@@ -59,6 +59,8 @@ public @Data class Contact {
 
     
 	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "address_id")
+	
 	private Address address;
 
 
@@ -72,7 +74,7 @@ public @Data class Contact {
 		this.last_name = dto.last_name;
 		this.email = dto.email;
 		this.phoneNumber = dto.phoneNumber;
-		this.address=dto.address;
+		
 		
 	}
 

@@ -10,12 +10,17 @@ import org.springframework.stereotype.Service;
 
 import com.lande.WorkshopAddressBook.dto.ContactDTO;
 import com.lande.WorkshopAddressBook.exceptions.AddressBookException;
+import com.lande.WorkshopAddressBook.model.Address;
 import com.lande.WorkshopAddressBook.model.Contact;
+import com.lande.WorkshopAddressBook.repository.AddressRepository;
 import com.lande.WorkshopAddressBook.repository.ContactRepository;
 
 @Service
 public class ContactService implements ContactServiceInterface{
 
+	@Autowired
+	private AddressRepository addressRepository;
+	
 	@Autowired
 	private ContactRepository repository;
 
@@ -32,6 +37,9 @@ public class ContactService implements ContactServiceInterface{
 	@Override
 	public Contact createContact(ContactDTO dto) {
 		Contact contact= new Contact( dto);
+		
+		Address address = addressRepository.findById(UUID.fromString(dto.addressID)).orElseThrow(()-> new AddressBookException("details not found!"));
+		contact.setAddress(address);
 		return repository.save(contact);
 	}
 
@@ -43,7 +51,6 @@ public class ContactService implements ContactServiceInterface{
 		contact.setLast_name(dto.last_name);
 		contact.setEmail(dto.email);
 		contact.setPhoneNumber(dto.phoneNumber);
-		contact.setAddress(dto.address);
 		return repository.save(contact);
 	}
 	

@@ -21,6 +21,7 @@ import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.lande.WorkshopAddressBook.dto.AddressDTO;
 import com.lande.WorkshopAddressBook.dto.ContactDTO;
@@ -52,7 +53,9 @@ public @Data class Address {
 	public String state;
 	public String zip;
 	
-	
+	@OneToOne(cascade = CascadeType.ALL, mappedBy = "address")
+	@JsonIgnore
+	public Contact contact;
 	
 
 
