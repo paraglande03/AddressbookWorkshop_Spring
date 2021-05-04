@@ -38,8 +38,10 @@ public class ContactService implements ContactServiceInterface{
 	public Contact createContact(ContactDTO dto) {
 		Contact contact= new Contact( dto);
 		
-		Address address = addressRepository.findById(UUID.fromString(dto.addressID)).orElseThrow(()-> new AddressBookException("details not found!"));
-		contact.setAddress(address);
+		
+		
+//		Address address = addressRepository.findById(UUID.fromString(dto.addressID)).orElseThrow(()-> new AddressBookException("details not found!"));
+////		contact.setAddress(address);
 		return repository.save(contact);
 	}
 
@@ -61,6 +63,19 @@ public class ContactService implements ContactServiceInterface{
 		
 	}
 	
+	
+	public List<Address> addAddressToContact(String contactId, String addressId) {
+		
+		Address address = addressRepository.findById(UUID.fromString(addressId)).orElseThrow(()-> new AddressBookException("details not found!"));
+	
+		Contact contact=repository.findById(UUID.fromString(contactId)).orElseThrow(()-> new AddressBookException("details not found!"));
+		List<Address> addresses = contact.getAddress();
+		addresses.add(address);
+		return repository.save(contact).getAddress();
+		
+		
+	
+	}
 	
 
 	@Override

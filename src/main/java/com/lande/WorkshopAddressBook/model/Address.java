@@ -53,9 +53,9 @@ public @Data class Address {
 	public String state;
 	public String zip;
 	
-	@OneToOne(cascade = CascadeType.ALL, mappedBy = "address")
-	@JsonIgnore
-	public Contact contact;
+//	@ToOne(cascade = CascadeType.ALL, mappedBy = "address")
+//	@JsonIgnore
+//	public Contact contact;
 	
 
 

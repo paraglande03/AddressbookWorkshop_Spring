@@ -58,10 +58,10 @@ public @Data class Contact {
 
 
     
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "address_id")
 	
-	private Address address;
+	private List<Address>  address;
 
 
 

@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.UUID;
 
 import com.lande.WorkshopAddressBook.dto.ContactDTO;
+import com.lande.WorkshopAddressBook.model.Address;
 import com.lande.WorkshopAddressBook.model.Contact;
 
 public interface ContactServiceInterface {
@@ -19,6 +20,8 @@ public interface ContactServiceInterface {
 	public void deleteDataById(UUID Id);
 	
 	public List<Contact> sortContact();
+	
+	public List<Address> addAddressToContact(String contactId, String addressId) ;
 	
 //	public Contact getcontactThroughaddress(id);
 }
