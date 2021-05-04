@@ -1,12 +1,17 @@
 package com.lande.WorkshopAddressBook.dto;
 
+import java.util.UUID;
+
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 
+import com.lande.WorkshopAddressBook.model.Address;
+
 import lombok.Data;
+import lombok.ToString;
 
-
+@ToString
 public @Data class ContactDTO {
 	
 	@Pattern(regexp = "^[a-zA-Z]{2,}$" , message = "Please add valid first name")
@@ -26,24 +31,33 @@ public @Data class ContactDTO {
 	@Pattern(regexp = "^[0-9]{10}$" , message = "Please valid 10 digit phone number")
 	public String phoneNumber;
 	
+	public Address address;
+	
+	
 	
 	@Override
 	public String toString() {
-		return "ContactDTO [first_name=" + first_name + ", last_name=" + last_name + ", email=" + email + ", phoneNumber=" + phoneNumber
-				+ "]";
+		return "ContactDTO [first_name=" + first_name + ", last_name=" + last_name + ", email=" + email
+				+ ", phoneNumber=" + phoneNumber + ", address=" + address + "]";
 	}
 
 
-	public ContactDTO(String first_name, String last_name, String email, String phoneNumber) {
+	public ContactDTO(String first_name, String last_name, String email, String phoneNumber, Address address) {
 		super();
+		
 		this.first_name = first_name;
 		this.last_name = last_name;
 		this.email = email;
+			this.address = address;
+
 		this.phoneNumber = phoneNumber;
+		
 	}
 
 
 	public ContactDTO() {
 		
 	}
+
+
 }

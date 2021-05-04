@@ -43,6 +43,7 @@ public class ContactService implements ContactServiceInterface{
 		contact.setLast_name(dto.last_name);
 		contact.setEmail(dto.email);
 		contact.setPhoneNumber(dto.phoneNumber);
+		contact.setAddress(dto.address);
 		return repository.save(contact);
 	}
 	
@@ -63,5 +64,7 @@ public class ContactService implements ContactServiceInterface{
 		
 	   
 	}
+
+
 
 }

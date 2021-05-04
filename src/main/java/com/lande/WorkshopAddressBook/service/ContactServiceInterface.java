@@ -19,4 +19,6 @@ public interface ContactServiceInterface {
 	public void deleteDataById(UUID Id);
 	
 	public List<Contact> sortContact();
+	
+//	public Contact getcontactThroughaddress(id);
 }
